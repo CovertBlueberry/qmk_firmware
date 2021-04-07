@@ -6,7 +6,16 @@
     "files.exclude": {
         "**/.build": true,
         "**/*.hex": true,
-        "**/*.bin": true
+        "**/*.bin": true,
+        ".github": true,
+        "docs/{de,es,gitbook,ja,*-*}": true,
+        "keyboards/[^l]*": true,
+        "keyboards/l[^i]*": true,
+        "keyboards/li[^l]*": true,
+        "layouts": true,
+        "**/packs": true,
+        "tests": true,
+        "users": true
     },
     "files.associations": {
         "*.h": "c",
@@ -19,8 +28,13 @@
         "utility": "c",
         "ranges": "c"
     },
+    "search.exclude": {
+        "keyboards/lily58/keymaps/{[^cdv],c[^o],d[^e]}*": true
+    },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,
         "files.trimTrailingWhitespace": false
-    }
+    },
+    "git.detectSubmodules": false,
+    "git.ignoreSubmodules": true
 }
