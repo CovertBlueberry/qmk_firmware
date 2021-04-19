@@ -2,21 +2,26 @@
 {
     // Unofficially, QMK uses spaces for indentation
     "editor.insertSpaces": true,
+    "editor.tabSize": 2,
     // Configure glob patterns for excluding files and folders.
     "files.exclude": {
         "**/.build": true,
         "**/*.hex": true,
         "**/*.bin": true,
         ".github": true,
+        "api_data": true,
+        "bin": true,
+        "data": true,
         "docs/{de,es,gitbook,ja,*-*}": true,
         "keyboards/{[^le],l[^i],li[^l]}*": true,
         "keyboards/{e[^r],er[^g],ergo[^d],ergod[^o],ergodo[^x],ergodox_[^e]}*": true,
         "keyboards/ergodox_ez/**/*{glow,shine}": true,
-        "keyboards/ergodox_ez/keymaps/{[^cde],d[^e],e[^c]}*": true,
+        "keyboards/ergodox_ez/keymaps/{[^cde],co[^v],d[^e],e[^c]}*": true,
         "layouts": true,
         "**/packs": true,
         "tests": true,
-        "users": true
+        "users": true,
+        "util": true
     },
     "files.associations": {
         "*.h": "c",
@@ -30,7 +35,10 @@
         "ranges": "c"
     },
     "search.exclude": {
-        "keyboards/lily58/keymaps/{[^cdv],c[^o],d[^e]}*": true
+        "drivers": true,
+        "keyboards/lily58/keymaps/{[^cdv],c[^o],d[^e]}*": true,
+        "lib": true,
+        "platforms": true
     },
     "[markdown]": {
         "editor.trimAutoWhitespace": false,
