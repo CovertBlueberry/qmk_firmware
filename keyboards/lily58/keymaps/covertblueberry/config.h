@@ -47,7 +47,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // count as a mod+letter, rather than two letters)
 // can also do PERMISSIVE_HOLD_PER_KEY to enable e.g. only for shift
 // https://precondition.github.io/home-row-mods#permissive-hold
+// https://docs.qmk.fm/#/tap_hold?id=permissive-hold
 // #define PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD_PER_KEY
 
 // enables long hold and release of a dual-function mod to send the original key
 // (likely to cause problems with home row mods)

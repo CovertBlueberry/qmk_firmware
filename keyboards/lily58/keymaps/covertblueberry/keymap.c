@@ -118,6 +118,15 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case A_HOME:
+            return true;
+        default:
+            return false;
+    }
+}
+
 // uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 //   switch (keycode) {
 //     case A_HOME:
