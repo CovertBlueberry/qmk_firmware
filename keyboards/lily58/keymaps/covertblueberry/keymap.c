@@ -14,6 +14,11 @@
 #define L_HOME LCTL_T(KC_L)
 #define SEMI_HOME RSFT_T(KC_SCLN)
 
+#define L_SPC LCAG(KC_LEFT)
+#define R_SPC LCAG(KC_RGHT)
+#define L_WORD LALT(KC_LEFT)
+#define R_WORD LALT(KC_RGHT)
+
 enum layer_number {
     _QWERTY = 0,
     _SYM = 1,
@@ -69,10 +74,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_SYM] = LAYOUT( \
-  _______,      KC_F1,        KC_F2,   KC_F3,        KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
-  LCAG(KC_LEFT),LALT(KC_LEFT),KC_UP,   LALT(KC_RGHT),KC_HOME, KC_PGUP,                   KC_HASH, KC_LCBR, KC_RCBR, KC_EQL,  KC_PLUS, KC_F12, \
-  LCAG(KC_RGHT),KC_LEFT,      KC_DOWN, KC_RGHT,      KC_END,  KC_PGDN,                   KC_DLR,  KC_LPRN, KC_RPRN, KC_MINS, KC_UNDS, KC_GRV, \
-  _______,      _______,      _______, _______,      _______, _______, _______, _______, KC_AMPR, KC_LBRC, KC_RBRC, KC_BSLS, KC_PIPE, KC_TILD, \
+  _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11, \
+  L_SPC,   L_WORD,  KC_UP,   R_WORD,  KC_HOME, KC_PGUP,                   KC_HASH, KC_LCBR, KC_RCBR, KC_EQL,  KC_PLUS, KC_F12, \
+  R_SPC,   KC_LEFT, KC_DOWN, KC_RGHT, KC_END,  KC_PGDN,                   KC_DLR,  KC_LPRN, KC_RPRN, KC_MINS, KC_UNDS, KC_GRV, \
+  _______, _______, _______, _______, _______, _______, _______, _______, KC_AMPR, KC_LBRC, KC_RBRC, KC_BSLS, KC_PIPE, KC_TILD, \
   _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
