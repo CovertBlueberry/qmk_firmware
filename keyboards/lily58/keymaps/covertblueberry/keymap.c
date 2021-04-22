@@ -39,6 +39,9 @@ enum layer_number {
 #ifdef KEYMAP_GEN
     #include "./keymap_gen.c"
 #else
+
+// NON-CONFIGURATOR KEYMAP--MAY BE OUT OF SYNC
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
@@ -130,6 +133,7 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case A_HOME:
+        case SEMI_HOME:
             return true;
         default:
             return false;
@@ -154,10 +158,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 
 void        set_keylog(uint16_t keycode, keyrecord_t *record);
 
-// SSD1306 OLED update loop, make sure to enable OLED_DRIVER_ENABLE=yes in rules.mk
-#ifdef OLED_DRIVER_ENABLE
-
-#include "./oled.c";
+#include "./oled.c"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
@@ -165,5 +166,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
-
-#endif  // OLED_DRIVER_ENABLE
