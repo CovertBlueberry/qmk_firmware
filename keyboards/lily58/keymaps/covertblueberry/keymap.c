@@ -152,84 +152,18 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 //   }
 // }
 
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//   return update_tri_layer_state(state, _SYM, _RAISE, _ADJUST);
-// }
-
-// copied from layer_state_reader.c
-#define L_BASE 0
-#define L_SYM (1 << 1)
-#define L_MEDIA (1 << 2)
-
-char layer_state_str[24];
-
-const char *read_layer_state(void) {
-    switch (layer_state) {
-        case L_BASE:
-            // return "Default";
-            snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Default");
-            break;
-        case L_SYM:
-            // return "Sym/Nav";
-            snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Sym/Nav");
-            break;
-        case L_MEDIA:
-            // return "Media";
-            snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Media");
-            break;
-        default:
-            // return "Other";
-              snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%ld", layer_state);
-    }
-
-    return layer_state_str;
-}
+void        set_keylog(uint16_t keycode, keyrecord_t *record);
 
 // SSD1306 OLED update loop, make sure to enable OLED_DRIVER_ENABLE=yes in rules.mk
 #ifdef OLED_DRIVER_ENABLE
 
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
-    return rotation;
-}
-
-// When you add source files to SRC in rules.mk, you can use functions.
-// const char *read_layer_state(void);
-const char *read_logo(void);
-void        set_keylog(uint16_t keycode, keyrecord_t *record);
-const char *read_keylog(void);
-const char *read_keylogs(void);
-
-// void set_timelog(void);
-// const char *read_timelog(void);
-
-char wpm_str[24];
-
-const char *read_wpm(void) {
-    snprintf(wpm_str, sizeof(wpm_str), "WPM: %i", get_current_wpm());
-    return wpm_str;
-}
-
-void oled_task_user(void) {
-    if (is_keyboard_master()) {
-        // If you want to change the display of OLED, you need to change here
-        oled_write_ln(read_layer_state(), false);
-        oled_write_ln(read_keylog(), false);
-        oled_write_ln(read_keylogs(), false);
-        oled_write_ln(read_wpm(), false);
-        // oled_write_ln(read_timelog(), false);
-    } else {
-        oled_write(read_logo(), false);
-    }
-}
-#endif  // OLED_DRIVER_ENABLE
+#include "./oled.c";
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
-#ifdef OLED_DRIVER_ENABLE
         set_keylog(keycode, record);
-#endif
-        // set_timelog();
     }
     return true;
 }
+
+#endif  // OLED_DRIVER_ENABLE
