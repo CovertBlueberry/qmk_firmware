@@ -14,10 +14,19 @@
 #define L_HOME LCTL_T(KC_L)
 #define SEMI_HOME RSFT_T(KC_SCLN)
 
+// space nav
 #define L_SPC LCAG(KC_LEFT)
 #define R_SPC LCAG(KC_RGHT)
+// word nav
 #define L_WORD LALT(KC_LEFT)
 #define R_WORD LALT(KC_RGHT)
+
+// mac shortcuts
+#define KC_FIND LGUI(KC_F)
+#define KC_UNDO LGUI(KC_Z)
+#define KC_CUT LGUI(KC_X)
+#define KC_COPY LGUI(KC_C)
+#define KC_PASTE LGUI(KC_V)
 
 enum layer_number {
     _QWERTY = 0,
