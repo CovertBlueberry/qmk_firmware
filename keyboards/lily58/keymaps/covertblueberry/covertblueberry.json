@@ -59,10 +59,10 @@
             "KC_RSFT",
             "KC_DEL",
             "MO(2)",
-            "TT(1)",
+            "MO(1)",
             "KC_ENT",
             "KC_SPC",
-            "TT(1)",
+            "MO(1)",
             "KC_BSPC",
             "KC_CAPS"
         ],
