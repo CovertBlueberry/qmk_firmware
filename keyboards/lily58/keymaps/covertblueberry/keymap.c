@@ -3,23 +3,28 @@
 // #include "lily58/rev1/rev1.h"
 
 // Left-hand home row mods
-#define HOME_A LSFT_T(KC_A)
-#define HOME_S LCTL_T(KC_S)
-#define HOME_D LALT_T(KC_D)
-#define HOME_F LGUI_T(KC_F)
+#define A_HOME LSFT_T(KC_A)
+#define S_HOME LCTL_T(KC_S)
+#define D_HOME LALT_T(KC_D)
+#define F_HOME LGUI_T(KC_F)
 
 // Right-hand home row mods
-#define HOME_J RGUI_T(KC_J)
-#define HOME_K RALT_T(KC_K)
-#define HOME_L LCTL_T(KC_L)
-#define HOME_SEMI RSFT_T(KC_SCLN)
+#define J_HOME RGUI_T(KC_J)
+#define K_HOME RALT_T(KC_K)
+#define L_HOME LCTL_T(KC_L)
+#define SEMI_HOME RSFT_T(KC_SCLN)
 
 enum layer_number {
     _QWERTY = 0,
-    _SYM,
-    _MEDIA,
+    _SYM = 1,
+    _MEDIA = 2,
 };
 
+#define KEYMAP_GEN
+
+#ifdef KEYMAP_GEN
+    #include "./keymap_gen.c"
+#else
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
@@ -40,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT( \
   KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,   KC_5,                 KC_6,    KC_7,   KC_8,    KC_9,   KC_0,     KC_MINS, \
   KC_GRAVE, KC_Q,   KC_W,    KC_E,    KC_R,   KC_T,                 KC_Y,    KC_U,   KC_I,    KC_O,   KC_P,     KC_BSLS, \
-  KC_TAB,   HOME_A, HOME_S,  HOME_D,  HOME_F, KC_G,                 KC_H,    HOME_J, HOME_K,  HOME_L, HOME_SEMI,KC_QUOTE,
+  KC_TAB,   A_HOME, S_HOME,  D_HOME,  F_HOME, KC_G,                 KC_H,    J_HOME, K_HOME,  L_HOME, SEMI_HOME,KC_QUOTE,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,   KC_B, KC_DEL,KC_BSPC, KC_N,    KC_M,   KC_COMM, KC_DOT, KC_SLSH,  KC_RSFT, \
                       KC_CAPS, KC_DEL, TT(_SYM),KC_ENT,          KC_SPC, TT(_SYM), KC_BSPC, MO(_MEDIA)
 ),
@@ -90,17 +95,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
 };
+#endif // KEYMAP_GEN
 
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case HOME_A:
-        case HOME_S:
-        case HOME_D:
-        case HOME_F:
-        case HOME_J:
-        case HOME_K:
-        case HOME_L:
-        case HOME_SEMI:
+        case A_HOME:
+        case S_HOME:
+        case D_HOME:
+        case F_HOME:
+        case J_HOME:
+        case K_HOME:
+        case L_HOME:
+        case SEMI_HOME:
             return true;
         default:
             return false;
@@ -109,14 +115,14 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
 
 // uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 //   switch (keycode) {
-//     case HOME_A:
-//     case HOME_S:
-//     case HOME_D:
-//     case HOME_F:
-//     case HOME_J:
-//     case HOME_K:
-//     case HOME_L:
-//     case HOME_SEMI:
+//     case A_HOME:
+//     case S_HOME:
+//     case D_HOME:
+//     case F_HOME:
+//     case J_HOME:
+//     case K_HOME:
+//     case L_HOME:
+//     case SEMI_HOME:
 //       return 500;
 //     default:
 //       return TAPPING_TERM;

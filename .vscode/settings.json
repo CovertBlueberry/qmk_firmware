@@ -45,5 +45,11 @@
         "files.trimTrailingWhitespace": false
     },
     "git.detectSubmodules": false,
-    "git.ignoreSubmodules": true
+    "git.ignoreSubmodules": true,
+    "[jsonc]": {
+        "editor.formatOnSave": true
+    },
+    "[json]": {
+        "editor.formatOnSave": true
+    }
 }
